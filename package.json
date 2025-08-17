@@ -1,0 +1,18 @@
+{
+  "name": "token-gated-downloads",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "fmt:contracts": "forge fmt && npx solhint \"contracts/src/**/*.sol\"",
+    "deploy:testnet": "bash scripts/deploy-testnet.sh",
+    "dev:web": "npm --prefix frontend run dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "solhint": "^6.0.0"
+  }
+}

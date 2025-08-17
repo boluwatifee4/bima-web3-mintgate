@@ -1,0 +1,116 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.card {
+  background: var(--accent);
+  padding: 2rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.statValue {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.statLabel {
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.secondaryButton {
+  background: var(--accent);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+}
+
+.monospace {
+  font-family: var(--font-geist-mono);
+  font-size: 0.875rem;
+  background: var(--background);
+  padding: 1rem;
+  border-radius: var(--radius);
+  word-break: break-all;
+  margin-bottom: 1.5rem;
+}
+
+.link {
+  display: block;
+  text-align: center;
+  padding: 0.75rem;
+  background: var(--background);
+  color: var(--foreground);
+  text-decoration: none;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.preview {
+  margin-top: 2rem;
+  background: var(--background);
+  padding: 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.previewLabel {
+  color: var(--muted);
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.previewImage {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+.downloadItem {
+  background: var(--background);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.downloadHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.downloadTitle {
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+}
+
+.downloadDescription {
+  color: var(--muted);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
