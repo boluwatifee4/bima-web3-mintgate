@@ -2,6 +2,7 @@ import Providers from "./providers";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,19 +40,7 @@ export default function RootLayout({
       <Providers>
         <body className={`${geistSans.variable} ${geistMono.variable}`}>
           <div className="layout">
-            <header className="container">
-              <nav
-                style={{
-                  height: "var(--header-height)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "flex-end",
-                  borderBottom: "1px solid var(--border)",
-                }}
-              >
-                {/* ConnectButton will be rendered inside pages */}
-              </nav>
-            </header>
+            <Header />
             <main>
               <div className="container">{children}</div>
             </main>
