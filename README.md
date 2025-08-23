@@ -1,18 +1,20 @@
-```markdown
 # CreatorVault | Token-Gated Digital Downloads
 
 [![License](https://img.shields.io/badge/license-ISC-blue.svg)](LICENSE)
 [![TypeScript](https://img.shields.io/badge/language-TypeScript-blue.svg)](https://www.typescriptlang.org/)
+[![Ethereum](https://img.shields.io/badge/blockchain-Ethereum-blue.svg)](https://ethereum.org/)
+[![NFTs](https://img.shields.io/badge/topic-NFTs-blue.svg)](https://opensea.io/)
 
 ## Introduction
 
-CreatorVault is a web3 application that enables creators to offer exclusive digital downloads gated by token ownership. This project allows creators to control access to their content, providing a secure and verifiable way to distribute digital assets to their community. This specific implementation is designed for the testnet environment.
+CreatorVault is a web3 application that enables creators to offer exclusive digital downloads gated by token ownership. This project allows creators to control access to their content, providing a secure and verifiable way to distribute digital assets to their community. Key features include token-gated access, secure file storage, and a user-friendly interface for both creators and collectors.
 
-Key features include:
+## Features
 
-*   **Token-Gated Access:** Restrict access to digital downloads based on the ownership of specific tokens (NFTs).
-*   **Web3 Integration:** Built using web3 technologies for secure and decentralized access control.
-*   **Frontend Interface:** A user-friendly frontend built with Next.js for easy interaction.
+*   **Token-Gated Access:** Restrict access to digital downloads based on NFT ownership.
+*   **Secure File Storage:** Utilize a secure and reliable storage solution for digital assets.
+*   **User-Friendly Interface:** Intuitive interface for creators to manage content and collectors to access downloads.
+*   **Web3 Integration:** Seamless integration with Ethereum and other web3 technologies.
 
 ## Installation
 
@@ -21,7 +23,7 @@ To get started with CreatorVault, follow these steps:
 1.  **Clone the repository:**
 
     ```bash
-    git clone <repository_url>  # Replace with the actual repository URL
+    git clone <repository_url>
     cd bima-web3-mintgate
     ```
 
@@ -43,49 +45,58 @@ To get started with CreatorVault, follow these steps:
     ALCHEMY_API_KEY=<your_alchemy_api_key>
     ```
 
-    *   `CONTRACT_ADDRESS`: The address of your deployed smart contract.  (See the `deploy:testnet` script in `package.json` for deployment instructions).
-    *   `ALCHEMY_API_KEY`: Your Alchemy API key for interacting with the Ethereum blockchain.
+    Replace `<your_contract_address>` with the address of your deployed smart contract and `<your_alchemy_api_key>` with your Alchemy API key.
 
-4.  **Deploy the smart contract (Testnet):**
+4.  **Build the frontend:**
+
+    ```bash
+    npm run build
+    ```
+
+## Usage
+
+1.  **Deploy the smart contract:** (This step assumes you have a smart contract ready.  The provided files do not include a contract, so this is a placeholder.)
 
     ```bash
     npm run deploy:testnet
     ```
-    This command executes the `scripts/deploy-testnet.sh` script, which handles the deployment of the smart contract to a testnet.  Ensure you have the necessary tooling (e.g., Foundry) installed and configured.
 
-## Usage
-
-1.  **Start the development server:**
+2.  **Run the development server:**
 
     ```bash
     npm run dev:web
     ```
 
-    This command starts the Next.js development server for the frontend.  The application will be accessible in your browser (usually at `http://localhost:3000`).
+    This will start the frontend development server.  You can then access the application in your web browser.
 
-2.  **Connect your wallet:**
+3.  **Connect your wallet:**  Use a web3-enabled wallet (e.g., MetaMask) to connect to the application.
 
-    Use a Web3-enabled wallet (e.g., MetaMask) to connect to the application.
+4.  **Mint or acquire the required NFT:**  Obtain the NFT that grants access to the digital download.
 
-3.  **Verify Token Ownership:**
+5.  **Access the download:**  Navigate to the download page and access the gated content.
 
-    The application checks if the connected wallet owns the required token(s) to access the gated content.
+**Example Code Snippet (Frontend - `frontend/src/app/download/page.tsx`)**
 
-4.  **Download Digital Assets:**
+This code snippet demonstrates how to use the `useAccount` and `useReadContract` hooks from the `wagmi` library to check if a user is connected and has the required token to access the download.
 
-    If the user owns the required token(s), they will be granted access to download the digital assets.
+```typescript
+"use client";
+import { useAccount, useReadContract } from "wagmi";
+import { CONTRACT_ABI, CONTRACT_ADDRESS } from "@/lib/contract";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { useState, useEffect } from "react";
+import Image from "next/image";
 
-## Features
-
-*   **Token-Gated Downloads:** Securely restrict access to digital downloads based on token ownership.
-*   **Frontend Interface:** User-friendly interface built with Next.js and RainbowKit for easy interaction.
-*   **Web3 Integration:** Utilizes web3 technologies for secure and decentralized access control.
-*   **Testnet Deployment:** Designed for deployment and testing on Ethereum testnets.
-*   **Responsive Design:** The frontend is designed to be responsive and accessible on various devices.
+export default function DownloadPage() {
+  const { address, isConnected } = useAccount();
+  const [imgUrl, setImgUrl] = useState<string | null>(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [down...
+```
 
 ## Contributing
 
-Contributions are welcome! Please follow these guidelines:
+Contributions are welcome!  Please follow these guidelines:
 
 1.  **Fork the repository.**
 2.  **Create a new branch** for your feature or bug fix.
@@ -98,16 +109,8 @@ This project is licensed under the [ISC License](LICENSE).
 
 ## Roadmap
 
-*   **Support for multiple token types:**  Allow gating based on ERC-20 tokens and other token standards.
-*   **Improved user interface:** Enhance the user experience with a more polished and intuitive interface.
-*   **Production Deployment:**  Deploy the application to a production environment.
-*   **More robust error handling:** Improve error handling and provide more informative feedback to the user.
-
-## Acknowledgements
-
-*   **Next.js:** For the frontend framework.
-*   **Wagmi:** For simplifying Web3 interactions.
-*   **RainbowKit:** For providing wallet connection components.
-*   **Foundry:** For smart contract development and testing.
-*   **Solhint:** For linting Solidity code.
-```
+*   Implement secure file storage using IPFS or similar.
+*   Add creator dashboard for managing content and access controls.
+*   Integrate with more NFT marketplaces.
+*   Support for multiple token standards (ERC-721, ERC-1155).
+*   Improve error handling and user feedback.
